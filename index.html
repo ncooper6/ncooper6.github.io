@@ -38,13 +38,13 @@
             scale="75 75 75"
             gps-entity-place="latitude:53.761385;longitude:-2.72117;"
         ></a-text>
-        <script>
-            const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
-            console.log(distanceMsg);
-        </script>
         <!-- <a-box material="color: yellow" gps-entity-place="latitude:53.761385;longitude:-2.72117;"/> -->
         <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
+    <script>
+        const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
+        console.log(distanceMsg);
+    </script>
 </body>
 
 </html>
