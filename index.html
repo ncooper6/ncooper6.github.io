@@ -25,7 +25,6 @@
         
         <a-camera gps-camera rotation-reader></a-camera> 
     </a-scene> -->
-    
     <a-scene
     vr-mode-ui="enabled: false;"
     embedded
@@ -35,16 +34,16 @@
             material="color:blue"
             value="Lidl is here. It is 'distanceMsg' metres away"
             look-at="[gps-camera]"
-            scale="75 75 75"
+            scale="100 100 100"
             gps-entity-place="latitude:53.761385;longitude:-2.72117;"
-        ></a-text>
+        >test</a-text>
         <!-- <a-box material="color: yellow" gps-entity-place="latitude:53.761385;longitude:-2.72117;"/> -->
         <a-camera gps-camera rotation-reader></a-camera>
+        <script>
+            const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distance');
+            console.log("Distance " + distanceMsg);
+        </script>
     </a-scene>
-    <script>
-        const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
-        console.log(distanceMsg);
-    </script>
 </body>
 
 </html>
