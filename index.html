@@ -35,13 +35,12 @@
             value="Lidl is here. It is 'distanceMsg' metres away"
             look-at="[gps-camera]"
             scale="50 50 50"
-            align="centre"
             gps-entity-place="latitude:53.761385;longitude:-2.72117;"
         >test</a-text>
         <!-- <a-box material="color: yellow" gps-entity-place="latitude:53.761385;longitude:-2.72117;"/> -->
         <a-camera gps-camera rotation-reader></a-camera>
         <script>
-            const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distance');
+            const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
             console.log("Distance " + distanceMsg);
         </script>
     </a-scene>
