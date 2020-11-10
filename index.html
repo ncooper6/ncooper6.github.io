@@ -40,7 +40,9 @@
         <!-- <a-box material="color: yellow" gps-entity-place="latitude:53.761385;longitude:-2.72117;"/> -->
         <a-camera gps-camera rotation-reader></a-camera>
         <script>
-            console.log(navigator.geolocation.getCurrentPosition(position.coords));
+            console.log(navigator.geolocation.watchPosition(console.log, console.log));
+            //console.log(latitude);
+            //console.log(longitude);
             const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distance');
             console.log("Distance " + distanceMsg);
         </script>
