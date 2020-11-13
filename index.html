@@ -15,15 +15,19 @@
     arjs="sourceType: webcam; debugUIEnabled:false;"
     >
         <a-text
+            value= ""
             look-at="[gps-camera]"
             scale="50 50 50"
             gps-entity-place="latitude:53.761385;longitude:-2.72117;"
             color="blue"
-        ></a-text>
+            id = "aframeText"
+        >
+        </a-text>
 
         <a-camera gps-camera rotation-reader></a-camera>
         <script>
-            const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distance');
+            const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
+            const distnaceMsg = document.getElementById('')
             console.log("Distance " + distanceMsg);
             getLocation = () => {
                 if (navigator.geolocation){
@@ -36,8 +40,9 @@
                 console.log("Latitude " + position.coords.latitude);
                 console.log("Longtitude " + position.coords.longitude);
                 //document.getElementsByTagName("a-text").setAttribute('value',position.coords.latitude);
-                document.getElementsByTagName("a-text").value = position.coords.latitude;
-                console.log(document.getElementsByTagName("a-text").value);
+                document.getElementById("aframeText").setAttribute('value', position.coords.latitude);
+                console.log(document.getElementById("aframeText").getAttribute('value'));
+                //console.log(document.getElementsByTagName("a-text").getAttribute('value'));
             };
         </script>
     </a-scene>
