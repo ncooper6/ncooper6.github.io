@@ -31,7 +31,7 @@
             
             getLocation = () => {//function to get users location
                 if (navigator.geolocation){//checking that geolocation is being tracked 
-                    navigator.geolocation.getCurrentPosition(showPosition);//watches for position changes and returns every couple of seconds
+                    navigator.geolocation.watchPosition(showPosition);//watches for position changes and returns every couple of seconds
                 } else {
                     console.log("Geolocation cannot be found");//logs and error code
                 }
