@@ -13,36 +13,55 @@
     vr-mode-ui="enabled: false;"
     embedded
     arjs="sourceType: webcam; debugUIEnabled:false;"
-    >
+    > <!--Wrapping a-scene with vr ui disabled and camera source set-->
         <a-text
             value= ""
-            look-at="[gps-camera]"
+            look-at="[gps-camera]" 
             scale="50 50 50"
             gps-entity-place="latitude:53.761385;longitude:-2.72117;"
             color="blue"
             id = "aframeText"
-        >
+        ><!--An a-text tag with values that set scale, gps co-ords for the marker, colour and look-at which makes it face the cam-->
         </a-text>
 
-        <a-camera gps-camera rotation-reader></a-camera>
-        <script>
-            const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
-            const distnaceMsg = document.getElementById('')
+        <a-camera gps-camera rotation-reader></a-camera><!--type of camera is set - lets AR.js know gps markers are being used-->
+        <script> //Js script to work out user's location and then workour how far they are as the crow flies. 
+            const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('latitude');
             console.log("Distance " + distanceMsg);
-            getLocation = () => {
-                if (navigator.geolocation){
-                    navigator.geolocation.watchPosition(showPosition);
+            
+            getLocation = () => {//function to get users location
+                if (navigator.geolocation){//checking that geolocation is being tracked 
+                    navigator.geolocation.getCurrentPosition(showPosition);//watches for position changes and returns every couple of seconds
                 } else {
-                    console.log("Geolocation cannot be found");
+                    console.log("Geolocation cannot be found");//logs and error code
                 }
             };
+
             showPosition = (position) => {
-                console.log("Latitude " + position.coords.latitude);
-                console.log("Longtitude " + position.coords.longitude);
-                //document.getElementsByTagName("a-text").setAttribute('value',position.coords.latitude);
-                document.getElementById("aframeText").setAttribute('value', position.coords.latitude);
-                console.log(document.getElementById("aframeText").getAttribute('value'));
-                //console.log(document.getElementsByTagName("a-text").getAttribute('value'));
+                //console.log("Latitude " + position.coords.latitude);
+                //console.log("Longtitude " + position.coords.longitude);
+                //document.getElementById("aframeText").setAttribute('value', position.coords.latitude); 
+                console.log(document.getElementById("aframeText").getAttribute('value'));//logs the value of the a-text marker
+                calcDistance(position.coords.longitude, position.coords.latitude, -2.72117, 53.761385);
+            };
+
+            deg2rad = (deg) =>{ // a function to convert degrees to radians, this is a better unit for working with lat and long
+                return deg * (Math.PI/180);
+            };
+
+            calcDistance = (currentLong, currentLat, markerLong, markerLat) => {//Haversine formula - calculates distance between two lat and long points 
+                const R = 6371 //radius of the Earth in km
+
+                const dLat = deg2rad(markerLat-currentLat);
+                const dLon = deg2rad(markerLong-currentLong);
+                console.log(dLat, dLat);
+                const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(currentLat)) * Math.cos(deg2rad(markerLat)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                console.log(a);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                var d = R * c; // Distance in km
+                var dM = Math.round(d * 1000); // converts to metres
+                document.getElementById("aframeText").setAttribute('value', "Lidl is " + dM + " Metres away"); 
+                console.log(dM + " Metres");
             };
         </script>
     </a-scene>
