@@ -14,14 +14,14 @@
     embedded
     arjs="sourceType: webcam; debugUIEnabled:false;"
     > <!--Wrapping a-scene with vr ui disabled and camera source set-->
-        <!--a-text
+        <a-text
             value= ""
             look-at="[gps-camera]" 
             scale="50 50 50"
             gps-entity-place="latitude:53.761385;longitude:-2.72117;"
             color="blue"
             id = "aframeText"
-        >An a-text tag with values that set scale, gps co-ords for the marker, colour and look-at which makes it face the cam-->
+        ><!--An a-text tag with values that set scale, gps co-ords for the marker, colour and look-at which makes it face the cam-->
         <a-entity
             gps-entity-place="latitude:53.761385;longitude:-2.72117;"
             look-at="[gps-camera]"  
