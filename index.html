@@ -19,7 +19,7 @@
         <a-text
             value= ""
             look-at="[gps-camera]" 
-            scale="5 5 5"
+            scale="25 25 25"
             gps-entity-place="latitude:53.761385;longitude:-2.72117;"
             color="blue"
             id ="aframeText"
@@ -38,7 +38,7 @@
             look-at="[gps-camera]" 
             animation-mixer="loop: repeat" 
             gltf-model="#c&tBuilding" 
-            scale="0.5 0.5 0.5"
+            scale="1 1 1"
             gps-entity-place="latitude: 53.761385; longitude: -2.72117;"
             position="0 0 0" 
         ></a-entity> <!--position is XYZ-->
@@ -58,7 +58,7 @@
             };
 
             showPosition = (position) => {
-                console.log(document.getElementById("aframeText").getAttribute('value'));//logs the value of the a-text marker
+                console.log(document.getElementById('aframeText').getAttribute('value'));//logs the value of the a-text marker
                 calcDistance(position.coords.longitude, position.coords.latitude, -2.72117, 53.761385);
             };
 
