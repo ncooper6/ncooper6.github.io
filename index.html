@@ -17,7 +17,7 @@
     arjs="sourceType: webcam; debugUIEnabled:false;"
     > <!--Wrapping a-scene with vr ui disabled and camera source set-->
         <a-text
-            value= "test"
+            value= ""
             look-at="[gps-camera]" 
             scale="25 25 25"
             gps-entity-place="latitude:53.761385;longitude:-2.72117;"
@@ -40,7 +40,7 @@
             gltf-model="#c&tBuilding" 
             scale="0.5 0.5 0.5"
             gps-entity-place="latitude: 53.761385; longitude: -2.72117;"
-            position="0 0 0" 
+            position="0 0 20" 
         ></a-entity> <!--position is XYZ-->
 
         <a-camera gps-camera rotation-reader></a-camera><!--type of camera is set - lets AR.js know gps markers are being used-->
