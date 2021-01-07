@@ -15,12 +15,12 @@
     vr-mode-ui="enabled: false;"
     embedded
     arjs="sourceType: webcam; debugUIEnabled:false;"
-    > <!--Wrapping a-scene with vr ui disabled and camera source set-->
+    > <!--Wrapping a-scene with vr ui disabled and camera source set--> <!--Preston lat: 53.761385 and long: -2.72117 -->
         <a-text
             value= ""
             look-at="[gps-camera]" 
             scale="25 25 25"
-            gps-entity-place="latitude:53.761385;longitude:-2.72117;"
+            gps-entity-place="latitude:51.602578; longitude:-0.48306;"
             color="blue"
             id ="aframeText"
             position="0 0 0" 
@@ -39,7 +39,7 @@
             animation-mixer="loop: repeat" 
             gltf-model="#c&tBuilding" 
             scale="1 1 1"
-            gps-entity-place="latitude: 53.761385; longitude: -2.72117;"
+            gps-entity-place="latitude: 51.602578; longitude: -0.48306;"
             position="0 0 0" 
         ></a-entity> <!--position is XYZ-->
 
@@ -76,7 +76,7 @@
                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                 var d = R * c; // Distance in km
                 var dM = Math.round(d * 1000); // converts to metres
-                document.getElementById("aframeText").setAttribute('value', "Lidl is " + dM + " Metres away"); 
+                document.getElementById("aframeText").setAttribute('value', "Pub is " + dM + " Metres away"); 
             };
         </script>
     </a-scene>
